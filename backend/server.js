@@ -5,6 +5,8 @@ const cors = require("cors");
 const passport = require("passport");
 const MongoStore = require("connect-mongo");
 const authRoutes = require("./routes/authRoutes");
+const notesRoute = require('./routes/notes');
+
 require("./config/passport");
 require('dotenv').config();
 
@@ -34,9 +36,11 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.json()); // to parse JSON bodies
 
 // Routes
 app.use("/auth", authRoutes);
+app.use('/api/notes', notesRoute);
 
 // Start Server
 app.listen(5000, () => console.log("🚀 Server started on http://localhost:5000"));

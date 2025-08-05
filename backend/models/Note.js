@@ -1,7 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const noteSchema = new mongoose.Schema({
-  userId: String,
   title: String,
   content: String,
   createdAt: {
@@ -10,4 +9,4 @@ const noteSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Note", noteSchema);
+module.exports = mongoose.model('Note', noteSchema);
